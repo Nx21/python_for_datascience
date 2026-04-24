@@ -5,11 +5,11 @@ import sys
 def count_text(text: str) -> tuple[int, int, int, int, int, int]:
     """Count character categories in the given text."""
     total = len(text)
-    upper = len(list(filter(str.isupper, text)))
-    lower = len(list(filter(str.islower, text)))
-    punctuation = len(list(filter(lambda c: c in string.punctuation, text)))
-    spaces = len(list(filter(str.isspace, text)))
-    digits = len(list(filter(str.isdigit, text)))
+    upper = sum(1 for c in text if c.isupper())
+    lower = sum(1 for c in text if c.islower())
+    punctuation = sum(1 for c in text if c in string.punctuation)
+    spaces = sum(1 for c in text if c.isspace())
+    digits = sum(1 for c in text if c.isdigit())
 
     return total, upper, lower, punctuation, spaces, digits
 
