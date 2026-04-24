@@ -11,7 +11,6 @@ def count_text(text: str) -> tuple[int, int, int, int, int, int]:
     spaces = len(list(filter(str.isspace, text)))
     digits = len(list(filter(str.isdigit, text)))
 
-
     return total, upper, lower, punctuation, spaces, digits
 
 
