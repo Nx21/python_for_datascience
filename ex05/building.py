@@ -1,4 +1,3 @@
-import string
 import sys
 
 
@@ -7,7 +6,7 @@ def count_text(text: str) -> tuple[int, int, int, int, int, int]:
     total = len(text)
     upper = sum(1 for c in text if c.isupper())
     lower = sum(1 for c in text if c.islower())
-    punctuation = sum(1 for c in text if c in string.punctuation)
+    punctuation = sum(1 for c in text if c in  r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~""")
     spaces = sum(1 for c in text if c.isspace())
     digits = sum(1 for c in text if c.isdigit())
 
@@ -24,8 +23,11 @@ def main():
             return
 
         if argc == 0 or (argc == 1 and sys.argv[1] == ""):
-            text = input("What is the text to count?\n")
-            text += "\n"
+            try:
+                text = input("What is the text to count?\n")
+                text += "\n"
+            except EOFError:
+                text = ""
         else:
             text = sys.argv[1]
         total, upper, lower, punctuation, spaces, digits = count_text(text)
