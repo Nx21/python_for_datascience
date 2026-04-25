@@ -9,13 +9,6 @@ def parse_args(argv: list[str]) -> tuple[str, int]:
         raise ValueError
 
     text = argv[1]
-    try:
-        int(text)
-    except ValueError:
-        pass
-    else:
-        raise ValueError
-
     n = int(argv[2])
     return text, n
 
